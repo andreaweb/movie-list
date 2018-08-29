@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import SVG from 'react-inlinesvg';
+import MovieDetails from './MovieDetails';
 import * as MoviesAPI from './MoviesAPI'
 import './App.css'
 
