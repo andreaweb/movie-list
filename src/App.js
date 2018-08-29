@@ -63,18 +63,22 @@ export default class App extends React.Component {
               </g>
           </svg>
         </div>
-        
+
         <section className="user-info">
          <div className="user-pic" 
          style={{backgroundImage: "url('./images/user.jpg')", backgroundSize: 'cover', backgroundPosition: 'center center'}} />
          <span>Andrea Santana</span>
         </section>
        </header>
+
        <main>
-        <ul>
-          <li>
-            <img src="https://m.media-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_SX300.jpg" />
-          </li>
+        <ul className="movies-container">
+        { Array.apply(null, { length: 20 }).map((e, i) => (
+            <li>
+              <img className="movie-card" src="https://m.media-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_SX300.jpg" />
+            </li>
+          ))
+        }
         </ul>
        </main>
       </div>
