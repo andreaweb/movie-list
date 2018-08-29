@@ -14,7 +14,7 @@ export class MovieDetails extends React.Component {
 				/>
 
 				<main className="movie-info">
-					<h2>Guardians of the Galaxy</h2>
+					<h2 className="movie-title">Guardians of the Galaxy</h2>
 					<span> 2017 | 107 min | Ficção, Ação, Drama </span>
 
 					<section className="rating">
@@ -133,8 +133,8 @@ export class MovieDetails extends React.Component {
 						<span>8.8/10</span>
 					</section>
 
-					<h5>Sinopse</h5>
-					<p>The Guardians must fight to keep their newfound family together 
+					<h5 className="synopsis-title">Sinopse</h5>
+					<p className="movie-synopsis">The Guardians must fight to keep their newfound family together 
 					as they unravel the mystery of Peter Quill's true parentage.</p>
 				</main>
 
