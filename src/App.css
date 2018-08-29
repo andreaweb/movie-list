@@ -55,6 +55,12 @@ body, .app {
   display: flex;
   flex-wrap: wrap;
 }
+.container-title{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: var(--medium-gray);
+  margin-left: 32px
+}
 .movie-item{
   max-height: 234px;
   margin-right: 32px;
