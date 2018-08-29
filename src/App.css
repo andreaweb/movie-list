@@ -17,24 +17,42 @@ body, .app {
 }
 
 .header{
+  margin: 32px 28px;
   display: flex;
   justify-content: space-between;
 }
 
 .search-field{
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
   background: var(--dark-gray);
   padding-left: 15px;
-  width: 250px;
+  width: 288px;
   border: none;
-  border-radius: 15px;
-  height: 36px;
+  border-radius: 16px;
+  height: 32px;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--medium-gray);
+}
+.search-field:focus,
+.search-field:active{
+  background: var(--medium-gray);
+  color: var(--light-gray);
+  font-style: normal;
 }
 .search-svg{
+  color: var(--medium-gray);
   left: -30px;
   position: relative;
   top: 7px;
 }
-
+.search-field:focus ~ .search-svg use,
+.search-field:active ~ .search-svg use
+.search-svg use{
+    fill: #fff;
+}
 
 .user-info{
   display: flex;
