@@ -17,7 +17,7 @@ body, .app {
 }
 
 .header{
-  margin: 32px 28px;
+  margin: 32px 32px 32px 28px;
   display: flex;
   justify-content: space-between;
 }
@@ -59,10 +59,13 @@ body, .app {
   align-items: center;
 }
 .user-pic{
-  width: 40px;
+  width: 32px;
   border-radius: 50%;
-  height: 40px;
+  height: 32px;
   margin-right: 10px
+}
+.user-name{
+  font-size: 12px;
 }
 
 
