@@ -137,7 +137,7 @@ export class MovieDetails extends React.Component {
 
 				<span className="close-button">
 					{ /* close icon */ }
-					<img src="images/ic-close@3x.png" height="16" width="16" />
+					<img className="close-icon" src="images/ic-close@3x.png" height="16" width="16" />
 					Voltar
 				</span>
 	    	</div>

@@ -73,10 +73,16 @@ export default class App extends React.Component {
        </header>
 
        <main>
+        <h4>Tendency</h4>
         <ul className="movies-container">
         { Array.apply(null, { length: 20 }).map((e, i) => (
-            <li>
-              <img className="movie-card" src="https://m.media-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_SX300.jpg" />
+            <li className="movie-item">
+              <img className="movie-card" 
+              src="https://m.media-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_SX300.jpg" />
+              <div className="movie-hover">
+                <span className="movie-hover__title">Guardians of the Galaxy</span>
+                <span className="movie-hover__year">2017</span>
+              </div>
             </li>
           ))
         }
