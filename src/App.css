@@ -144,3 +144,32 @@ body, .app {
 .display-none{
   display: none !important;
 }
+
+@media screen and (max-width: 825px){
+/* card 108 width 162 height */
+/* 10px margin between cards, 8px from screen margin*/
+/* title 18px */
+/*search 24 x 24px - no input field*/
+/*no user name*/
+  .header{
+    margin: 24px;
+  }
+  .search{
+    margin-left: auto;
+  }
+  .search-svg{
+    cursor: pointer;
+  }
+  .search-svg use{
+    fill: #fff;
+  }
+  .user-name,
+  .search-field{
+    display: none
+  }
+}
+@media screen and (max-width: 380px){
+  .search{
+    margin-left: 50px;
+  }
+}
