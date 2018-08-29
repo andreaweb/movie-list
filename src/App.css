@@ -16,5 +16,33 @@ body, .app {
   color: white;
 }
 
+.header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-field{
+  background: var(--dark-gray);
+  padding-left: 15px;
+  width: 250px;
+  border: none;
+  border-radius: 15px;
+  height: 36px;
+}
+.search-svg{
+  left: -30px;
+  position: relative;
+  top: 7px;
+}
 
 
+.user-info{
+  display: flex;
+  align-items: center;
+}
+.user-pic{
+  width: 40px;
+  border-radius: 50%;
+  height: 40px;
+  margin-right: 10px
+}
