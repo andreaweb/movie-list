@@ -92,7 +92,7 @@
 
 
        <main>
-        <h4 className="container-title">Tendency</h4>
+        <h4 className="container-title">Trending</h4>
         <ul className="movies-container">
         { Array.apply(null, { length: 20 }).map((e, i) => (
             <li className="movie-item">
