@@ -128,8 +128,14 @@ body, .app {
   padding-top: 5px;
   display: block;
 }
+
+/* PÁGINA DETALHES */
 .movie-details{
   display: flex;
+}
+.movie-poster{
+  height: 100vh;
+  width: 480px;
 }
 .movie-info{
   margin-left: 20px;

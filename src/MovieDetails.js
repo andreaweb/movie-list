@@ -5,9 +5,12 @@ export class MovieDetails extends React.Component {
 	render() {
   		return  (
 			<div className="movie-details">
-				<img 
+				<div 
 					className="movie-poster" 
-					src="https://m.media-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_SX300.jpg" 
+					style={{
+					background: 'linear-gradient(to right, rgba(0, 0, 0, 0), #000000), url("https://m.media-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_SX300.jpg") no-repeat center',
+					backgroundSize: 'cover'
+						}}
 				/>
 
 				<main className="movie-info">
