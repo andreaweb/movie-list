@@ -188,6 +188,9 @@ body, .app {
   top: 36px;
   color: var(--light-gray);
 }
+.close-button--mobile{
+  display: none;
+}
 .close-icon{
   margin-right: 8px;
   margin-top: 5px;
@@ -217,12 +220,6 @@ body, .app {
   .movie-card{
     width: 108px;
   }
-
-/* card 108 width 162 height */
-/* 10px margin between cards, 8px from screen margin*/
-/* title 18px */
-/*search 24 x 24px - no input field*/
-/*no user name*/
   .header{
     margin: 24px;
   }
@@ -238,6 +235,56 @@ body, .app {
   .user-name,
   .search-field{
     display: none
+  }
+
+  /*details page */
+  .close-button{
+    right: 24px;
+    top: 24px;
+  }
+  .close-text{
+    display: none;
+  }
+  .close-button--mobile{
+    display: block;
+    height: 40px;
+    margin-top: 32px;
+    font-size: 14px;
+    line-height: 20px;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    color: var(--light-gray);
+    background-color: var(--gray);
+    cursor: pointer;
+  }
+  .movie-details{
+    display: initial;
+  }
+  .movie-poster{
+    width: 97vw;
+  }
+  .movie-info{
+    position: absolute;
+    top: 0;
+    margin: 0 24px;
+    font-size: 12px;
+  }
+  .movie-title{
+    font-size: 28px;
+    display: flex;
+    height: 40vh;
+    align-items: flex-end;
+    box-sizing: content-box;
+  }
+  .number-rating{
+    font-size: 14px;
+  }
+  .synopsis-title{
+    font-size: 18px;
+  }
+  .movie-synopsis{
+    line-height: 20px;
   }
 }
 @media screen and (max-width: 380px){

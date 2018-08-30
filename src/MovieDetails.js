@@ -141,12 +141,14 @@ export const MovieDetails = () => {
 				<h5 className="synopsis-title">Sinopse</h5>
 				<p className="movie-synopsis">The Guardians must fight to keep their newfound family together 
 				as they unravel the mystery of Peter Quill's true parentage.</p>
+
+				<button className="close-button--mobile">Voltar</button>
 			</main>
 
 			<span className="close-button">
 				{ /* close icon */ }
 				<img className="close-icon" src="images/ic-close@3x.png" height="16" width="16" />
-				Voltar
+				<span className="close-text">Voltar</span>
 			</span>
 		</div>
 	)
