@@ -1,9 +1,5 @@
   import React from 'react'
-  import { Switch, Route } from 'react-router-dom'
-  import SVG from 'react-inlinesvg';
   import { Link } from 'react-router-dom';
-  import { MovieDetails } from './MovieDetails';
-  import * as MoviesAPI from './MoviesAPI'
   import './App.css'
 
   if (process.env.NODE_ENV !== 'production') {
@@ -76,7 +72,7 @@
           { /* loading */ }
           <div className="loading display-none"> 
             <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
-                <g fill="#FFF" fill-rule="evenodd">
+                <g fill="#FFF" fillRule="evenodd">
                     <path d="M72.222 6.2c-.744-.411-1.695-.167-2.125.544L59.21 24.77c-.43.71-.175 1.62.569 2.03.744.411 1.695.167 2.125-.544L72.79 8.23c.43-.71.175-1.62-.569-2.03zM89.8 23.778c-.41-.744-1.32-.999-2.03-.57l-18.026 10.89c-.711.429-.955 1.38-.545 2.124.411.744 1.32.999 2.031.57l18.026-10.89c.711-.429.955-1.38.545-2.124z" opacity=".05"/>
                     <path d="M96 48.5a1.5 1.5 0 0 0-1.5-1.5h-21a1.5 1.5 0 0 0 0 3h21a1.5 1.5 0 0 0 1.5-1.5zM89.8 72.222c.411-.744.167-1.695-.544-2.125L71.23 59.21c-.71-.43-1.62-.175-2.03.569-.411.744-.167 1.695.544 2.125L87.77 72.79c.71.43 1.62.175 2.03-.569z" opacity=".1"/>
                     <path d="M72.222 89.8c.744-.41.999-1.32.57-2.03l-10.89-18.026c-.429-.711-1.38-.955-2.124-.545-.744.411-.999 1.32-.57 2.031l10.89 18.026c.429.711 1.38.955 2.124.545z" opacity=".2"/>
@@ -94,9 +90,9 @@
           <main>
             <h4 className="container-title">Trending</h4>
             <ul className="movies-container">
-              { Array.apply(null, { length: 20 }).map((e, i) => (
-                  <li className="movie-item">
-                    <img className="movie-card" 
+              { Array.apply(null, { length: 10 }).map((e, i) => (
+                  <li className="movie-item" key={i}>
+                    <img className="movie-card" alt=""
                     src="https://m.media-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_SX300.jpg" />
                     <Link to="/MovieDetails">
                       <div className="movie-hover">

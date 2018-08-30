@@ -105,9 +105,9 @@ body, .app {
 }
 .movie-hover{
   position: relative;
+  width: 108px;
   height: 234px;
   background: rgba(0,0,0,.5);
-  width: 156px;
   bottom: 238px;
   padding: 0 10px;
   display: none;
@@ -207,7 +207,11 @@ body, .app {
 .display-none{
   display: none !important;
 }
-
+@media screen and (min-width: 826px){
+  .movie-hover{
+    width: 156px;
+  }
+}
 @media screen and (max-width: 825px){
   .container-title{
     font-size: 18px;
@@ -252,6 +256,9 @@ body, .app {
   .close-text{
     display: none;
   }
+  .movie-synopsis ~ a{
+    text-decoration: none;
+  }
   .close-button--mobile{
     display: block;
     height: 40px;
@@ -264,6 +271,7 @@ body, .app {
     color: var(--light-gray);
     background-color: var(--gray);
     cursor: pointer;
+    width: 100%;
   }
   .movie-details{
     display: initial;

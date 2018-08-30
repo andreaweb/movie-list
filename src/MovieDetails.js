@@ -151,7 +151,7 @@ export const MovieDetails = (show) => {
 			<Link to="/">
 				<span className="close-button">
 					{ /* close icon */ }
-					<img className="close-icon" src="../images/ic-close@3x.png" height="16" width="16" />
+					<img className="close-icon" alt="" src="../images/ic-close@3x.png" height="16" width="16" />
 					<span className="close-text">Voltar</span>
 				</span>
 			</Link>
