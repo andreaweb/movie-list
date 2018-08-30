@@ -15,7 +15,9 @@ body, .app {
   background: black;
   color: white;
 }
-
+#root{
+  font-family: 'Montserrat', sans-serif;
+}
 .header{
   margin: 32px 32px 32px 28px;
   display: flex;
@@ -23,7 +25,6 @@ body, .app {
 }
 
 .search-field{
-  font-family: 'Montserrat', sans-serif;
   outline: none;
   background: var(--dark-gray);
   padding-left: 15px;
@@ -68,7 +69,6 @@ body, .app {
 .user-name{
   font-size: 12px;
   font-weight: 500px;
-  font-family: 'Montserrat', sans-serif;
   color: var(--light-gray);
 }
 
@@ -82,7 +82,6 @@ body, .app {
   margin-left: 32px;
 }
 .container-title{
-  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 20px;
   color: var(--medium-gray);
@@ -114,7 +113,6 @@ body, .app {
   padding-top: 100px;
   box-sizing: content-box;
   height: 100px;
-  font-family: 'Montserrat', sans-serif;
   line-height: 20px;
   font-weight: 700;
   font-size: 16px;
@@ -122,7 +120,6 @@ body, .app {
   align-items: flex-end;
 }
 .movie-hover__year{
-  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 12px;
   padding-top: 5px;
@@ -136,12 +133,19 @@ body, .app {
 
 .movie-poster{
   height: 100vh;
-  width: 480px;
+  flex-basis: 480px;
+  flex-shrink: 0;
 }
-
+.movie-poster:after{
+  content: '';
+  position: absolute;
+  width: 120px;
+  left: 360px;
+  height: 100vh;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #000000)
+}
 .movie-info{
   margin: 0 48px;
-  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: 500;
   display: flex;
@@ -152,7 +156,6 @@ body, .app {
 
 .movie-title{
   font-size: 36px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 800;
   margin-top: 0;
   margin-bottom: 8px;
@@ -261,8 +264,25 @@ body, .app {
   .movie-details{
     display: initial;
   }
+  .movie-poster:before{
+    content: '';
+    width: 100vw;
+    height: 108px;
+    position: absolute;
+    top: 0;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0), #000000);
+  }
+  .movie-poster:after{
+    content: '';
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
+  }
   .movie-poster{
-    width: 97vw;
+    width: 100vw;
   }
   .movie-info{
     position: absolute;

@@ -7,7 +7,7 @@ export const MovieDetails = () => {
 			<div 
 				className="movie-poster" 
 				style={{
-				background: 'linear-gradient(to right, rgba(0, 0, 0, 0), #000000),' +
+				background:
 				'url("https://m.media-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_SX300.jpg") no-repeat center',
 				backgroundSize: 'cover'
 					}}
