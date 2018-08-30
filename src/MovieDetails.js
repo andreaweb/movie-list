@@ -8,14 +8,20 @@ export class MovieDetails extends React.Component {
 				<div 
 					className="movie-poster" 
 					style={{
-					background: 'linear-gradient(to right, rgba(0, 0, 0, 0), #000000), url("https://m.media-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_SX300.jpg") no-repeat center',
+					background: 'linear-gradient(to right, rgba(0, 0, 0, 0), #000000),' +
+					'url("https://m.media-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_SX300.jpg") no-repeat center',
 					backgroundSize: 'cover'
 						}}
 				/>
 
 				<main className="movie-info">
 					<h2 className="movie-title">Guardians of the Galaxy</h2>
-					<span> 2017 | 107 min | Ficção, Ação, Drama </span>
+					<span> 2017 
+						<span className="separator">|</span> 
+						107 min
+						<span className="separator">|</span> 
+						Ficção, Ação, Drama 
+					</span>
 
 					<section className="rating">
 						{ /* filled star */}
@@ -130,7 +136,7 @@ export class MovieDetails extends React.Component {
 						    </g>
 						</svg>
 
-						<span>8.8/10</span>
+						<span className="number-rating">8.8 / 10</span>
 					</section>
 
 					<h5 className="synopsis-title">Sinopse</h5>
