@@ -99,6 +99,10 @@ body, .app {
 .movie-item:hover .movie-hover{
   display: block;
 }
+.movie-item a{
+  text-decoration: none !important;
+  color: inherit;
+}
 .movie-hover{
   position: relative;
   height: 234px;
