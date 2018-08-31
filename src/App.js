@@ -1,8 +1,13 @@
   import React from 'react'
   import { Switch, Route } from 'react-router-dom'
+  //import PropTypes from 'prop-types'
   import MainPage from './MainPage.js';
   import { MovieDetails } from './MovieDetails';
-  import * as MoviesAPI from './MoviesAPI'
+  import { connect } from 'react-redux';
+  import {
+   // searchMovies,
+    fetchMovies
+  } from './actions'
   import './App.css'
 
   if (process.env.NODE_ENV !== 'production') {
@@ -10,16 +15,10 @@
     whyDidYouUpdate(React);
   }
 
-  export default class App extends React.Component {
-    state = { 
-    }
-
+  class App extends React.Component {
     componentDidMount(){
-      
-    }
-
-    componentWillMount(){
-      console.log(MoviesAPI.getDetails('tt0138097'))
+      const { dispatch } = this.props
+      dispatch(fetchMovies('prince'))
     }
 
     render() {
@@ -35,3 +34,10 @@
       )
     }
   }
+
+  function mapStateToProps(state){
+    const { query, movies, requesting, lastUpdated } = state
+    return { query, movies, requesting, lastUpdated }
+  }
+
+  export default connect(mapStateToProps)(App)

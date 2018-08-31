@@ -1,5 +1,6 @@
   import React from 'react'
   import { Link } from 'react-router-dom';
+  //import * as MoviesAPI from './MoviesAPI'
   import './App.css'
 
   if (process.env.NODE_ENV !== 'production') {
@@ -9,9 +10,15 @@
 
   export default class MainPage extends React.Component {
     state = { 
+      query: '',
+      movies: []
     }
 
     componentDidMount(){
+      
+    }
+
+    searchMovieName = (e,value) =>{
       
     }
 
@@ -36,7 +43,7 @@
             </svg>
 
             <div className="search">
-              <input className="search-field" placeholder="Que filme você procura?" />
+              <input className="search-field" onChange={ (e,value) => this.searchMovieName(e,value)} value={this.state.query} placeholder="Que filme você procura?" />
 
               { /* import later as search component */}
               <svg className="search-svg" xmlns='http://www.w3.org/2000/svg' xmlnsXlink='http://www.w3.org/1999/xlink'
