@@ -4,7 +4,8 @@ import {
 	REQUEST_MOVIES,
 	RECEIVE_MOVIES,
 	SEARCH_MOVIES,
-	GET_MOVIE_DETAILS  
+	REQUEST_MOVIE_DETAILS,
+	RECEIVE_MOVIE_DETAILS, 
 } from '../actions'
 
 function movies (state = {requesting: false, movies: []}, action) {
@@ -24,8 +25,26 @@ function movies (state = {requesting: false, movies: []}, action) {
   }
 }
 
+function movieDetails (state = {requesting: false, movieDetails: []}, action) {
+  switch (action.type) {
+  	case REQUEST_MOVIE_DETAILS:
+  		return Object.assign({}, state, {
+  			requesting: true
+  		})
+  	case RECEIVE_MOVIE_DETAILS:
+  		return Object.assign({}, state, {
+  			requesting: false,
+  			movieDetails: action.movieDetails,
+  			lastUpdated: action.receivedAt
+  		})
+    default :
+      return state
+  }
+}
+
 const reducer = combineReducers({
-  movies
+  movies,
+  movieDetails
 })
 
 export default reducer
