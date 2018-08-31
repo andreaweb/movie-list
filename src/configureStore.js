@@ -1,17 +1,28 @@
-import { createStore, applyMiddleware } from 'redux'
+import { combineReducers, applyMiddleware, createStore } from 'redux'
 //import { apiMiddleware } from 'redux-api-middleware';
 import reducer from './reducers'
+import { createBrowserHistory } from 'history'
+import { push, routerMiddleware } from './actions'
 import { createLogger } from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 
 const loggerMiddleware = createLogger()
 
-export default function configureStore(preloadedState){
+// Create the history object
+export const history = createBrowserHistory()
+
+ 
+// Build the middleware
+const middleware = routerMiddleware(history)
+
+export function configureStore(preloadedState){
 	return createStore(
 		reducer,
 		preloadedState,
+		
 		applyMiddleware(
 			thunkMiddleware,
+			middleware,
 			loggerMiddleware
 		)
 	)

@@ -1,12 +1,30 @@
 import { combineReducers } from 'redux'
-
 import {
 	REQUEST_MOVIES,
 	RECEIVE_MOVIES,
 	SEARCH_MOVIES,
 	REQUEST_MOVIE_DETAILS,
 	RECEIVE_MOVIE_DETAILS, 
+	LOCATION_CHANGE
 } from '../actions'
+
+const initialState = {
+  pathname: '/',
+  search: '',
+  hash: '',
+};
+
+const routerReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case LOCATION_CHANGE:
+      return {
+        ...state,
+        ...action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
 function movies (state = {requesting: false, movies: []}, action) {
   switch (action.type) {
@@ -44,7 +62,8 @@ function movieDetails (state = {requesting: false, movieDetails: []}, action) {
 
 const reducer = combineReducers({
   movies,
-  movieDetails
+  movieDetails,
+  routerReducer
 })
 
 export default reducer

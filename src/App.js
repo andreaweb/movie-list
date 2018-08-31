@@ -3,6 +3,8 @@ import { Switch, Route } from 'react-router-dom'
 //import PropTypes from 'prop-types'
 import MainPage from './MainPage.js';
 import { MovieDetails } from './MovieDetails';
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
 import { connect } from 'react-redux';
 import {
  // searchMovies,
@@ -16,29 +18,16 @@ if (process.env.NODE_ENV !== 'production') {
   whyDidYouUpdate(React);
 }
 
-class App extends React.Component {
-  componentDidMount(){
-    const { dispatch } = this.props
-    //There's no option to search by category or popularity, so I'm searching for a neutral word instead
-    dispatch(fetchMovies('the'))
-
-    //just a test
-    dispatch(fetchMovieDetails('tt0138097'))
-  }
-
-  render() {
-    return (
-    <div className="app">
+const App = ({store}) => (
+  <Provider store={store}>
+    <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={MainPage}>
-        </Route>
-        <Route path="/movieDetails" component={MovieDetails}>
-        </Route>
+        <Route exact path='/' component={MainPage}/>
+        <Route path='/movieDetails' component={MovieDetails}/>
       </Switch>
-    </div>
-    )
-  }
-}
+    </BrowserRouter>
+  </Provider>
+)
 
 function mapStateToProps(state){
   const { query, movies, requesting, lastUpdated } = state

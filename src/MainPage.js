@@ -2,20 +2,30 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 //import * as MoviesAPI from './MoviesAPI'
 import './App.css'
-
+import { connect } from 'react-redux';
+import {
+ // searchMovies,
+  fetchMovies,
+  fetchMovieDetails
+} from './actions'
 if (process.env.NODE_ENV !== 'production') {
   const {whyDidYouUpdate} = require('why-did-you-update');
   whyDidYouUpdate(React);
 }
 
-export default class MainPage extends React.Component {
+class MainPage extends React.Component {
   state = { 
     query: '',
     movies: []
   }
 
   componentDidMount(){
-    
+    const { dispatch } = this.props
+    //There's no option to search by category or popularity, so I'm searching for a default word instead
+    dispatch(fetchMovies('game'))
+
+    //just a test
+    dispatch(fetchMovieDetails('tt0138097'))
   }
 
   searchMovieName = (e,value) =>{
@@ -116,3 +126,9 @@ export default class MainPage extends React.Component {
             )
   }
 }
+function mapStateToProps(state){
+  const { query, movies, requesting, lastUpdated } = state
+  return { query, movies, requesting, lastUpdated }
+}
+
+export default connect(mapStateToProps)(MainPage)

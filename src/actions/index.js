@@ -3,6 +3,12 @@ export const RECEIVE_MOVIES = 'RECEIVE_MOVIES'
 export const REQUEST_MOVIE_DETAILS = 'REQUEST_MOVIE_DETAILS'
 export const RECEIVE_MOVIE_DETAILS = 'RECEIVE_MOVIE_DETAILS'
 export const SEARCH_MOVIES = 'SEARCH_MOVIES'
+export const PUSH = 'ROUTER/PUSH';
+export const REPLACE = 'ROUTER/REPLACE';
+export const GO = 'ROUTER/GO';
+export const GO_BACK = 'ROUTER/GO_BACK';
+export const GO_FORWARD = 'ROUTER/GO_FORWARD';
+export const LOCATION_CHANGE = 'ROUTER/LOCATION_CHANGE';
 
 const apiSearch = "http://www.omdbapi.com/?apikey=8099235f&s=";
 const apiDetails = "http://www.omdbapi.com/?apikey=8099235f&i=";
@@ -94,3 +100,66 @@ export function fetchMovieDetails(movieID){
 			)
 	}
 }
+
+export const push = (href) => ({
+  type: PUSH,
+  payload: href,
+});
+export const replace = (href) => ({
+  type: REPLACE,
+  payload: href,
+});
+export const go = (index) => ({
+  type: GO,
+  payload: index,
+});
+export const goBack = () => ({
+  type: GO_BACK,
+});
+export const goForward = () => ({
+  type: GO_FORWARD,
+});
+export const locationChange = ({ pathname, search, hash }) => ({
+  type: LOCATION_CHANGE,
+  payload: {
+    pathname,
+    search,
+    hash,
+  },
+});
+export function startListener(history, store) {
+  store.dispatch(locationChange({
+    pathname: history.location.pathname,
+    search: history.location.search,
+    hash: history.location.hash,
+  }));
+  history.listen((location) => {
+    store.dispatch(locationChange({
+      pathname: location.pathname,
+      search: location.search,
+      hash: location.hash,
+    }));
+  });
+}
+
+export const routerMiddleware = (history) => () => (next) => (action) => {
+  switch (action.type) {
+    case PUSH:
+      history.push(action.payload);
+      break;
+    case REPLACE:
+      history.replace(action.payload);
+      break;
+    case GO:
+      history.go(action.payload);
+      break;
+    case GO_BACK:
+      history.goBack();
+      break;
+    case GO_FORWARD:
+      history.goForward();
+      break;
+    default:
+      return next(action);
+  }
+};
