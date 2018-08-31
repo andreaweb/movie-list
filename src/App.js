@@ -19,7 +19,8 @@ if (process.env.NODE_ENV !== 'production') {
 class App extends React.Component {
   componentDidMount(){
     const { dispatch } = this.props
-   dispatch(fetchMovies('prince'))
+    //There's no option to search by category or popularity, so I'm searching for a neutral word instead
+    dispatch(fetchMovies('the'))
 
     //just a test
     dispatch(fetchMovieDetails('tt0138097'))

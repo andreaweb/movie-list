@@ -50,18 +50,28 @@ export function fetchMovies(query){
 		dispatch(requestMovies(query))
 		return fetch(apiSearch+query)
 			.then(
-				response => { 
-					let results = response.json(); 
-					return results
+				response => {
+					if(!response.ok){
+						console.log(response)
+						throw new Error()
+					}
+					return response.json()
 				}
 			)
 			.then(
 				json => { 
+					if(!json){
+						console.log("Error: Json is ", json)
+						throw new Error()
+					}
 					let results = json.Search; 
-					console.log(results.map(movie => movie)); 
 					dispatch(receiveMovies(json))
 				}
 			)
+			.catch(
+				error => console.log("Error: ", error)
+			)
+			
 	}
 }
 
