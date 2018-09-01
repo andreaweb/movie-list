@@ -139,6 +139,8 @@ body, .app {
   height: 100vh;
   flex-basis: 480px;
   flex-shrink: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .movie-poster:after{
   content: '';

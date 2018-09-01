@@ -9,27 +9,25 @@ import {
   fetchMovieDetails
 } from './actions'
 if (process.env.NODE_ENV !== 'production') {
-  const {whyDidYouUpdate} = require('why-did-you-update');
-  whyDidYouUpdate(React);
+ // const {whyDidYouUpdate} = require('why-did-you-update');
+ // whyDidYouUpdate(React);
 }
 
 class MainPage extends React.Component {
   state = { 
-    query: '',
-    movies: []
+    query: ''
   }
 
   componentDidMount(){
-    const { dispatch } = this.props
     //There's no option to search by category or popularity, so I'm searching for a default word instead
-    dispatch(fetchMovies('game'))
+    this.props.dispatch(fetchMovies('game'))
 
-    //just a test
-    dispatch(fetchMovieDetails('tt0138097'))
+    console.log(this.props)
   }
 
-  searchMovieName = (e,value) =>{
-    
+  searchMovieDetails = (movieID) => {
+   // console.log(this.props.dispatch)
+    this.props.dispatch(fetchMovieDetails(movieID))
   }
 
   render() {
@@ -107,28 +105,31 @@ class MainPage extends React.Component {
         <main>
           <h4 className="container-title">Trending</h4>
           <ul className="movies-container">
-            { Array.apply(null, { length: 10 }).map((e, i) => (
-                <li className="movie-item" key={i}>
-                  <img className="movie-card" alt=""
-                  src="https://m.media-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_SX300.jpg" />
-                  <Link to="/MovieDetails">
-                    <div className="movie-hover">
-                      <span className="movie-hover__title">Guardians of the Galaxy</span>
-                      <span className="movie-hover__year">2017</span>
-                    </div>
-                  </Link>
-                </li>
+            { this.props.movies.movies  
+              ? this.props.movies.movies.map(
+                (movie) => (
+                  <li className="movie-item" key={movie.imdbID}>
+                    <img className="movie-card" alt=""
+                    src={movie.Poster} />
+                    <Link to="/MovieDetails" onClick={(movieID) => this.searchMovieDetails(movie.imdbID)}>
+                      <div className="movie-hover">
+                        <span className="movie-hover__title">{movie.Title}</span>
+                        <span className="movie-hover__year">{movie.Year}</span>
+                      </div>
+                    </Link>
+                  </li>
               ))
+              : null
             }
           </ul>
         </main>
       </div>
-            )
+    )
   }
 }
 function mapStateToProps(state){
-  const { query, movies, requesting, lastUpdated } = state
-  return { query, movies, requesting, lastUpdated }
+  const { query, movies, requesting, lastUpdated, movieDetails } = state
+  return { query, movies, requesting, lastUpdated, movieDetails }
 }
 
 export default connect(mapStateToProps)(MainPage)

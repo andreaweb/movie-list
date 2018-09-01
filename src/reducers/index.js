@@ -35,7 +35,7 @@ function movies (state = {requesting: false, movies: []}, action) {
   	case RECEIVE_MOVIES:
   		return Object.assign({}, state, {
   			requesting: false,
-  			movies: action.movies,
+  			movies: action.movies.Search,
   			lastUpdated: action.receivedAt
   		})
     default :
@@ -43,11 +43,11 @@ function movies (state = {requesting: false, movies: []}, action) {
   }
 }
 
-function movieDetails (state = {requesting: false, movieDetails: []}, action) {
+function movieDetails (state = {movieDetails: []}, action) {
   switch (action.type) {
   	case REQUEST_MOVIE_DETAILS:
   		return Object.assign({}, state, {
-  			requesting: true
+  			
   		})
   	case RECEIVE_MOVIE_DETAILS:
   		return Object.assign({}, state, {

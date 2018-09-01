@@ -12,7 +12,7 @@ const store = configureStore()
 startListener(history, store)
 
 // Now you can read location data from the store!
-console.log(store.getState().routerReducer)
+//console.log(store.getState().routerReducer)
 let currentLocation = store.getState().routerReducer.pathname
 
 // You can also subscribe to changes in the location!

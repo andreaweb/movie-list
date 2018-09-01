@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 //import PropTypes from 'prop-types'
 import MainPage from './MainPage.js';
-import { MovieDetails } from './MovieDetails';
+import MovieDetails from './MovieDetails.js';
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { connect } from 'react-redux';
@@ -14,8 +14,8 @@ import {
 import './App.css'
 
 if (process.env.NODE_ENV !== 'production') {
-  const {whyDidYouUpdate} = require('why-did-you-update');
-  whyDidYouUpdate(React);
+ // const {whyDidYouUpdate} = require('why-did-you-update');
+ // whyDidYouUpdate(React);
 }
 
 const App = ({store}) => (
@@ -30,8 +30,8 @@ const App = ({store}) => (
 )
 
 function mapStateToProps(state){
-  const { query, movies, requesting, lastUpdated } = state
-  return { query, movies, requesting, lastUpdated }
+  const { query, movies, requesting, lastUpdated, movieDetails } = state
+  return { query, movies, requesting, lastUpdated, movieDetails }
 }
 
 export default connect(mapStateToProps)(App)

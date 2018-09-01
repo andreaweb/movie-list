@@ -50,7 +50,6 @@ function receiveMovieDetails(json){
 	}
 }
 
-
 export function fetchMovies(query){
 	return dispatch => {
 		dispatch(requestMovies(query))
@@ -87,12 +86,20 @@ export function fetchMovieDetails(movieID){
 		return fetch(apiDetails+movieID)
 			.then(
 				response => { 
+					if(!response.ok){
+						console.log(response)
+						throw new Error()
+					}
 					let results = response.json(); 
 					return results
 				}
 			)
 			.then(
 				json => { 
+					if(!json){
+						console.log("Error: Json is ", json)
+						throw new Error()
+					}
 					let results = json; 
 					console.log(results); 
 					dispatch(receiveMovieDetails(json))

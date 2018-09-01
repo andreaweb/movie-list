@@ -6,7 +6,7 @@ import { push, routerMiddleware } from './actions'
 import { createLogger } from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 
-const loggerMiddleware = createLogger()
+//const loggerMiddleware = createLogger()
 
 // Create the history object
 export const history = createBrowserHistory()
@@ -23,7 +23,7 @@ export function configureStore(preloadedState){
 		applyMiddleware(
 			thunkMiddleware,
 			middleware,
-			loggerMiddleware
+		//	loggerMiddleware
 		)
 	)
 }
