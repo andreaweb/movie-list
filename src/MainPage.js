@@ -15,8 +15,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 class MainPage extends React.Component {
   state = { 
-    query: '',
-    searchFieldVisible: false
+    query: 'jojm',
+    searchFieldVisible: false,
+    warning: false
   }
 
   componentDidMount(){
@@ -29,6 +30,16 @@ class MainPage extends React.Component {
   searchMovieDetails = (movieID) => {
    // console.log(this.props.dispatch)
     this.props.dispatch(fetchMovieDetails(movieID))
+  }
+
+  searchMovieName = () => {
+    this.setState({query: this.search.value})
+    if(this.search.value.length > 2){
+      this.setState({warning: false})
+      this.props.dispatch(fetchMovies(this.search.value))
+    }else{
+      this.setState({warning: true})
+    }
   }
 
   toggleSearchField = () =>{
@@ -57,8 +68,8 @@ class MainPage extends React.Component {
 
           <div className="search">
             <input className={this.state.searchFieldVisible ? "search-field visible" : "search-field" } 
-            onChange={ (e,value) => this.searchMovieName(e,value)} 
-            value={this.state.query} 
+            onChange={this.searchMovieName} 
+            ref={input => this.search = input}
             placeholder="Que filme você procura?"
             />
 
@@ -84,6 +95,8 @@ class MainPage extends React.Component {
                     </g>
                 </g>
             </svg>
+
+             <span className={this.state.warning ? "warning" : "display-none"}>Please type at least 3 characters.</span>
           </div>
 
           <section className={this.state.searchFieldVisible ? "user-info display-none" : "user-info"} >
@@ -137,8 +150,8 @@ class MainPage extends React.Component {
   }
 }
 function mapStateToProps(state){
-  const { query, movies, requesting, lastUpdated, movieDetails } = state
-  return { query, movies, requesting, lastUpdated, movieDetails }
+  const { movies, requesting, lastUpdated, movieDetails } = state
+  return { movies, requesting, lastUpdated, movieDetails }
 }
 
 export default connect(mapStateToProps)(MainPage)

@@ -43,6 +43,12 @@ body, .app {
   color: var(--light-gray);
   font-style: normal;
 }
+.warning{
+  font-size: 11px;
+  display: block;
+  margin-left: 15px;
+  color: var(--orange);
+}
 .search-svg{
   color: var(--medium-gray);
   left: -30px;
@@ -326,6 +332,13 @@ body, .app {
   }
   .search-field.visible{
     display: inline-block;
+    width: 200px;
+  }
+  .search-field.visible ~ .search-svg{
+    right: 30px;
+    position: absolute;
+    top: 31px;
+    left: auto;
   }
 }
 @media screen and (max-width: 380px){
