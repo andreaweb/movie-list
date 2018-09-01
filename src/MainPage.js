@@ -15,14 +15,15 @@ if (process.env.NODE_ENV !== 'production') {
 
 class MainPage extends React.Component {
   state = { 
-    query: 'jojm',
+    query: 'game',
     searchFieldVisible: false,
-    warning: false
+    warning: false,
+    search: false
   }
 
   componentDidMount(){
     //There's no option to search by category or popularity, so I'm searching for a default word instead
-    this.props.dispatch(fetchMovies('game'))
+    this.props.dispatch(fetchMovies(this.state.query))
 
     console.log(this.props)
   }
@@ -35,7 +36,7 @@ class MainPage extends React.Component {
   searchMovieName = () => {
     this.setState({query: this.search.value})
     if(this.search.value.length > 2){
-      this.setState({warning: false})
+      this.setState({warning: false, search: true})
       this.props.dispatch(fetchMovies(this.search.value))
     }else{
       this.setState({warning: true})
@@ -106,27 +107,28 @@ class MainPage extends React.Component {
           </section>
         </header>
 
-        { /* loading */ }
-        <div className="loading display-none"> 
-          <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
-              <g fill="#FFF" fillRule="evenodd">
-                  <path d="M72.222 6.2c-.744-.411-1.695-.167-2.125.544L59.21 24.77c-.43.71-.175 1.62.569 2.03.744.411 1.695.167 2.125-.544L72.79 8.23c.43-.71.175-1.62-.569-2.03zM89.8 23.778c-.41-.744-1.32-.999-2.03-.57l-18.026 10.89c-.711.429-.955 1.38-.545 2.124.411.744 1.32.999 2.031.57l18.026-10.89c.711-.429.955-1.38.545-2.124z" opacity=".05"/>
-                  <path d="M96 48.5a1.5 1.5 0 0 0-1.5-1.5h-21a1.5 1.5 0 0 0 0 3h21a1.5 1.5 0 0 0 1.5-1.5zM89.8 72.222c.411-.744.167-1.695-.544-2.125L71.23 59.21c-.71-.43-1.62-.175-2.03.569-.411.744-.167 1.695.544 2.125L87.77 72.79c.71.43 1.62.175 2.03-.569z" opacity=".1"/>
-                  <path d="M72.222 89.8c.744-.41.999-1.32.57-2.03l-10.89-18.026c-.429-.711-1.38-.955-2.124-.545-.744.411-.999 1.32-.57 2.031l10.89 18.026c.429.711 1.38.955 2.124.545z" opacity=".2"/>
-                  <path d="M23.778 89.8c.744.411 1.695.167 2.125-.544L36.79 71.23c.43-.71.175-1.62-.569-2.03-.744-.411-1.695-.167-2.125.544L23.21 87.77c-.43.71-.175 1.62.569 2.03z" opacity=".3"/>
-                  <path d="M47.5 96a1.5 1.5 0 0 0 1.5-1.5v-21a1.5 1.5 0 0 0-3 0v21a1.5 1.5 0 0 0 1.5 1.5z" opacity=".2"/>
-                  <path d="M47.5 24a1.5 1.5 0 0 0 1.5-1.5v-21a1.5 1.5 0 0 0-3 0v21a1.5 1.5 0 0 0 1.5 1.5z" opacity=".6"/>
-                  <path d="M6.2 72.222c.41.744 1.32.999 2.03.57l18.026-10.89c.711-.429.955-1.38.545-2.124-.411-.744-1.32-.999-2.031-.57L6.744 70.099c-.711.429-.955 1.38-.545 2.124z" opacity=".3"/>
-                  <path d="M0 48.5A1.5 1.5 0 0 0 1.5 50h21a1.5 1.5 0 0 0 0-3h-21A1.5 1.5 0 0 0 0 48.5z" opacity=".4"/>
-                  <path d="M23.778 6.2c-.744.41-.999 1.32-.57 2.03l10.89 18.026c.429.711 1.38.955 2.124.545.744-.411.999-1.32.57-2.031L25.901 6.744c-.429-.711-1.38-.955-2.124-.545z" opacity=".5"/>
-                  <path d="M6.2 23.778c-.411.744-.167 1.695.544 2.125L24.77 36.79c.71.43 1.62.175 2.03-.569.411-.744.167-1.695-.544-2.125L8.23 23.21c-.71-.43-1.62-.175-2.03.569z" opacity=".4"/>
-              </g>
-          </svg>
-        </div>
-
         <main>
           <h4 className="container-title">Trending</h4>
-          <ul className="movies-container">
+
+          { /* loading */ }
+          <div className={ this.props.movies.requesting ? "loading" : "loading display-none" }> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
+                <g fill="#FFF" fillRule="evenodd">
+                    <path d="M72.222 6.2c-.744-.411-1.695-.167-2.125.544L59.21 24.77c-.43.71-.175 1.62.569 2.03.744.411 1.695.167 2.125-.544L72.79 8.23c.43-.71.175-1.62-.569-2.03zM89.8 23.778c-.41-.744-1.32-.999-2.03-.57l-18.026 10.89c-.711.429-.955 1.38-.545 2.124.411.744 1.32.999 2.031.57l18.026-10.89c.711-.429.955-1.38.545-2.124z" opacity=".05"/>
+                    <path d="M96 48.5a1.5 1.5 0 0 0-1.5-1.5h-21a1.5 1.5 0 0 0 0 3h21a1.5 1.5 0 0 0 1.5-1.5zM89.8 72.222c.411-.744.167-1.695-.544-2.125L71.23 59.21c-.71-.43-1.62-.175-2.03.569-.411.744-.167 1.695.544 2.125L87.77 72.79c.71.43 1.62.175 2.03-.569z" opacity=".1"/>
+                    <path d="M72.222 89.8c.744-.41.999-1.32.57-2.03l-10.89-18.026c-.429-.711-1.38-.955-2.124-.545-.744.411-.999 1.32-.57 2.031l10.89 18.026c.429.711 1.38.955 2.124.545z" opacity=".2"/>
+                    <path d="M23.778 89.8c.744.411 1.695.167 2.125-.544L36.79 71.23c.43-.71.175-1.62-.569-2.03-.744-.411-1.695-.167-2.125.544L23.21 87.77c-.43.71-.175 1.62.569 2.03z" opacity=".3"/>
+                    <path d="M47.5 96a1.5 1.5 0 0 0 1.5-1.5v-21a1.5 1.5 0 0 0-3 0v21a1.5 1.5 0 0 0 1.5 1.5z" opacity=".2"/>
+                    <path d="M47.5 24a1.5 1.5 0 0 0 1.5-1.5v-21a1.5 1.5 0 0 0-3 0v21a1.5 1.5 0 0 0 1.5 1.5z" opacity=".6"/>
+                    <path d="M6.2 72.222c.41.744 1.32.999 2.03.57l18.026-10.89c.711-.429.955-1.38.545-2.124-.411-.744-1.32-.999-2.031-.57L6.744 70.099c-.711.429-.955 1.38-.545 2.124z" opacity=".3"/>
+                    <path d="M0 48.5A1.5 1.5 0 0 0 1.5 50h21a1.5 1.5 0 0 0 0-3h-21A1.5 1.5 0 0 0 0 48.5z" opacity=".4"/>
+                    <path d="M23.778 6.2c-.744.41-.999 1.32-.57 2.03l10.89 18.026c.429.711 1.38.955 2.124.545.744-.411.999-1.32.57-2.031L25.901 6.744c-.429-.711-1.38-.955-2.124-.545z" opacity=".5"/>
+                    <path d="M6.2 23.778c-.411.744-.167 1.695.544 2.125L24.77 36.79c.71.43 1.62.175 2.03-.569.411-.744.167-1.695-.544-2.125L8.23 23.21c-.71-.43-1.62-.175-2.03.569z" opacity=".4"/>
+                </g>
+            </svg>
+          </div>
+
+          <ul className={ this.props.movies.requesting ? "movies-container display-none" : "movies-container" }>
             { this.props.movies.movies  
               ? this.props.movies.movies.map(
                 (movie) => (
