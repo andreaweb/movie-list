@@ -23,7 +23,7 @@ class MainPage extends React.Component {
 
   componentDidMount(){
     //There's no option to search by category or popularity, so I'm searching for a default word instead
-    if(this.props.movies.movies.length <= 0){
+    if(this.props.movies.length <= 0){
       this.props.dispatch(fetchMovies(this.state.query))
     }
     console.log(this.props)
@@ -130,8 +130,8 @@ class MainPage extends React.Component {
           </div>
 
           <ul className={ this.props.movies.requesting ? "movies-container display-none" : "movies-container" }>
-            { this.props.movies.movies  
-              ? this.props.movies.movies.map(
+            { this.props.movies  
+              ? this.props.movies.map(
                 (movie) => (
                   <li className="movie-item" key={movie.imdbID}>
                     <img className="movie-card" alt=""
@@ -153,7 +153,7 @@ class MainPage extends React.Component {
   }
 }
 function mapStateToProps(state){
-  const { movies, requesting, lastUpdated, movieDetails } = state
+  const { movies: {movies} , requesting, lastUpdated, movieDetails } = state
   return { movies, requesting, lastUpdated, movieDetails }
 }
 
