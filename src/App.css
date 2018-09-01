@@ -245,8 +245,7 @@ body, .app {
   .search-svg use{
     fill: #fff;
   }
-  .user-name,
-  .search-field{
+  .user-name{
     display: none
   }
 
@@ -319,6 +318,14 @@ body, .app {
   }
   .movie-synopsis{
     line-height: 20px;
+  }
+}
+@media screen and (max-width: 560px){
+  .search-field{
+    display: none;
+  }
+  .search-field.visible{
+    display: inline-block;
   }
 }
 @media screen and (max-width: 380px){
