@@ -23,8 +23,9 @@ class MainPage extends React.Component {
 
   componentDidMount(){
     //There's no option to search by category or popularity, so I'm searching for a default word instead
-    this.props.dispatch(fetchMovies(this.state.query))
-
+    if(this.props.movies.movies.length <= 0){
+      this.props.dispatch(fetchMovies(this.state.query))
+    }
     console.log(this.props)
   }
 
