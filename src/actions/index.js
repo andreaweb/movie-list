@@ -133,6 +133,7 @@ export function startListener(history, store) {
     hash: history.location.hash,
   }));
   history.listen((location) => {
+  	console.log("History listens to location and changes to ", location.pathname)
     store.dispatch(locationChange({
       pathname: location.pathname,
       search: location.search,
@@ -144,6 +145,7 @@ export function startListener(history, store) {
 export const routerMiddleware = (history) => () => (next) => (action) => {
   switch (action.type) {
     case PUSH:
+    console.log(history, 'router middleware pushes', action.payload)
       history.push(action.payload);
       break;
     case REPLACE:

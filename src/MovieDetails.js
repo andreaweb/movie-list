@@ -1,20 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { push } from './actions'
+import { push, replace } from './actions'
 import Rating from './Rating';
 import './App.css'
 
 class MovieDetails extends React.Component {
 	componentDidMount(){
-		if(this.props.activeMovie.movieDetails.requesting){
-			return
-		}else if(this.props.activeMovie.movieDetails.imdbID && !this.props.activeMovie.movieDetails.requesting){
-			this.props.dispatch(push(`/${this.props.activeMovie.movieDetails.imdbID}`))
-		}else{
-			this.props.dispatch(push('/'))
-		}
+
 	}
+
 	render() {
 		return  ( //try to make something like if movieID == null, render MainPage instead
 		

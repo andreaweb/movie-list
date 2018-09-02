@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 //import * as MoviesAPI from './MoviesAPI'
 import './App.css'
 import { connect } from 'react-redux';
+import { push, replace } from './actions'
 import {
  // searchMovies,
   fetchMovies,
@@ -137,7 +138,7 @@ class MainPage extends React.Component {
                   <li className="movie-item" key={movie.imdbID}>
                     <img className="movie-card" alt=""
                     src={ movie.Poster == "N/A" ? "http://phillyjamz953fm.com/wp-content/plugins/penci-portfolio//images/no-thumbnail.jpg" : movie.Poster } />
-                    <Link to="/MovieDetails" onClick={(movieID) => this.searchMovieDetails(movie.imdbID)}>
+                    <Link to={`/movieDetails/${movie.imdbID}`} onClick={(movieID) => this.searchMovieDetails(movie.imdbID)}>
                       <div className="movie-hover">
                         <span className="movie-hover__title">{movie.Title}</span>
                         <span className="movie-hover__year">{movie.Year}</span>

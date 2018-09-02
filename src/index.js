@@ -20,6 +20,8 @@ let unsubscribe = store.subscribe(() => {
   let previousLocation = currentLocation
   currentLocation = store.getState().routerReducer.pathname
   if (previousLocation !== currentLocation) {
+  	console.log("Index - Current Location: ", currentLocation)
+	store.dispatch(push(currentLocation))
     // You can render your application reactively here!
   }
 })
