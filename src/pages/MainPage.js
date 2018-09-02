@@ -113,7 +113,7 @@ class MainPage extends React.Component {
           <h4 className="container-title">Trending</h4>
 
           { /* loading */ }
-          <div className={ this.props.moviesList.movies.requesting ? "loading" : "loading display-none" }> 
+          <div className={ this.props.moviesList.requesting ? "loading" : "loading display-none" }> 
             <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
                 <g fill="#FFF" fillRule="evenodd">
                     <path d="M72.222 6.2c-.744-.411-1.695-.167-2.125.544L59.21 24.77c-.43.71-.175 1.62.569 2.03.744.411 1.695.167 2.125-.544L72.79 8.23c.43-.71.175-1.62-.569-2.03zM89.8 23.778c-.41-.744-1.32-.999-2.03-.57l-18.026 10.89c-.711.429-.955 1.38-.545 2.124.411.744 1.32.999 2.031.57l18.026-10.89c.711-.429.955-1.38.545-2.124z" opacity=".05"/>
@@ -130,7 +130,7 @@ class MainPage extends React.Component {
             </svg>
           </div>
 
-          <ul className={ this.props.moviesList.movies.requesting ? "movies-container display-none" : "movies-container" }>
+          <ul className={ this.props.moviesList.requesting ? "movies-container display-none" : "movies-container" }>
             { this.props.moviesList.movies  
               ? this.props.moviesList.movies.map(
                 (movie) => (

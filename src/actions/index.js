@@ -44,7 +44,6 @@ function receiveMovieDetails(json){
 export function fetchMovies(query){
 	return dispatch => {
 		dispatch(requestMovies(query))
-		console.log('Query is '+query)
 		return fetch(apiSearch+query)
 			.then(
 				response => {
