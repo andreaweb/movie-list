@@ -110,6 +110,7 @@ body, .app {
 }
 .movie-item{
   max-height: 234px;
+  height: 234px;
   margin-right: 32px;
   margin-bottom: 24px;
   overflow: hidden;
