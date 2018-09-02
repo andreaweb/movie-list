@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { push, replace } from './actions'
-import Rating from './Rating';
-import './App.css'
+import Rating from '../components/Rating';
+import '../components/App.css'
 
 class MovieDetails extends React.Component {
 	componentDidMount(){
@@ -25,7 +24,7 @@ class MovieDetails extends React.Component {
 
 					<main className="movie-info">
 						<h2 className="movie-title">{this.props.activeMovie.movieDetails.Title}</h2>
-						<span> {this.props.activeMovie.movieDetails.Year } { this.props.activeMovie.movieDetails.imdbID}
+						<span> {this.props.activeMovie.movieDetails.Year }
 							<span className="separator">|</span> 
 							{	
 								this.props.activeMovie.movieDetails.Runtime == "N/A"

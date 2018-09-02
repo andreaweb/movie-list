@@ -1,14 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 //import * as MoviesAPI from './MoviesAPI'
-import './App.css'
+import '../components/App.css'
 import { connect } from 'react-redux';
-import { push, replace } from './actions'
 import {
  // searchMovies,
   fetchMovies,
   fetchMovieDetails
-} from './actions'
+} from '../actions'
 if (process.env.NODE_ENV !== 'production') {
  // const {whyDidYouUpdate} = require('why-did-you-update');
  // whyDidYouUpdate(React);

@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { configureStore, history } from './configureStore'
+import { configureStore, history } from './store/configureStore'
 import { startListener } from './actions'
 import { push } from './actions'
-import App from './App'
+import App from './components/App'
 import './index.css'
 
 const store = configureStore()
@@ -20,7 +20,6 @@ let unsubscribe = store.subscribe(() => {
   let previousLocation = currentLocation
   currentLocation = store.getState().routerReducer.pathname
   if (previousLocation !== currentLocation) {
-  	console.log("Index - Current Location: ", currentLocation)
 	store.dispatch(push(currentLocation))
     // You can render your application reactively here!
   }
