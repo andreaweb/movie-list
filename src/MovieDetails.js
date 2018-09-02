@@ -1,58 +1,68 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { push } from './actions'
 import Rating from './Rating';
 import './App.css'
 
 class MovieDetails extends React.Component {
+	componentDidMount(){
+		if(this.props.activeMovie.movieDetails.requesting){
+			return
+		}else if(this.props.activeMovie.movieDetails.imdbID && !this.props.activeMovie.movieDetails.requesting){
+			this.props.dispatch(push(`/${this.props.activeMovie.movieDetails.imdbID}`))
+		}else{
+			this.props.dispatch(push('/'))
+		}
+	}
 	render() {
 		return  ( //try to make something like if movieID == null, render MainPage instead
 		
 			<div>
-			{	this.props.movieDetails.Title ?
+			{	this.props.activeMovie.movieDetails.Title ?
 				<div className="movie-details">
 					<div 
 						className="movie-poster" 
 						style={{ backgroundImage: `url(
-							${this.props.movieDetails.Poster != "N/A" ? this.props.movieDetails.Poster : null})`
+							${this.props.activeMovie.movieDetails.Poster != "N/A" ? this.props.activeMovie.movieDetails.Poster : null})`
 							}}
 					/>
 
 					<main className="movie-info">
-						<h2 className="movie-title">{this.props.movieDetails.Title}</h2>
-						<span> {this.props.movieDetails.Year }
+						<h2 className="movie-title">{this.props.activeMovie.movieDetails.Title}</h2>
+						<span> {this.props.activeMovie.movieDetails.Year } { this.props.activeMovie.movieDetails.imdbID}
 							<span className="separator">|</span> 
 							{	
-								this.props.movieDetails.Runtime == "N/A"
+								this.props.activeMovie.movieDetails.Runtime == "N/A"
 								? "No Runtime available"
-								: this.props.movieDetails.Runtime
+								: this.props.activeMovie.movieDetails.Runtime
 							} 
 							<span className="separator">|</span> 
 							{	
-								this.props.movieDetails.Genre == "N/A"
+								this.props.activeMovie.movieDetails.Genre == "N/A"
 								? "No genre available"
-								: this.props.movieDetails.Genre
+								: this.props.activeMovie.movieDetails.Genre
 							} 
 						</span>
 
 						<section className="rating">
-							{ this.props.movieDetails.imdbRating && this.props.movieDetails.imdbRating != "N/A"
-								? <Rating rating={this.props.movieDetails.imdbRating} />
+							{ this.props.activeMovie.movieDetails.imdbRating && this.props.activeMovie.movieDetails.imdbRating != "N/A"
+								? <Rating rating={this.props.activeMovie.movieDetails.imdbRating} />
 								: null
 							}
 							
 							<span className="number-rating"> {
-								this.props.movieDetails.imdbRating == "N/A"
+								this.props.activeMovie.movieDetails.imdbRating == "N/A"
 								? " - "
-								: this.props.movieDetails.imdbRating
+								: this.props.activeMovie.movieDetails.imdbRating
 							} / 10</span>
 						</section>
 
 						<h5 className="synopsis-title">Sinopse</h5>
 						<p className="movie-synopsis">
-							{this.props.movieDetails.Plot == "N/A" 
+							{this.props.activeMovie.movieDetails.Plot == "N/A" 
 								? "No plot available"
-								: this.props.movieDetails.Plot
+								: this.props.activeMovie.movieDetails.Plot
 							}
 						</p>
 						
@@ -78,8 +88,8 @@ class MovieDetails extends React.Component {
 }
 
 function mapStateToProps(state){
-  const { query, movies, requesting, lastUpdated, movieDetails: {movieDetails} } = state
-  return { query, movies, requesting, lastUpdated, movieDetails }
+  const { query, lastUpdated, activeMovie } = state
+  return { query, lastUpdated, activeMovie }
 }
 
 export default connect(mapStateToProps)(MovieDetails)
