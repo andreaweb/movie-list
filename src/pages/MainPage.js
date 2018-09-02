@@ -145,7 +145,9 @@ class MainPage extends React.Component {
                     </Link>
                   </li>
               ))
-              : null
+              : <li className="movie-item">
+                    <span>Nothing Found :(</span>
+                  </li>
             }
           </ul>
         </main>

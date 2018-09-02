@@ -116,6 +116,7 @@ body, .app {
 }
 .movie-card{
   width: 156px;
+  min-height: 153px;
 }
 .movie-item:hover .movie-hover{
   display: block;
