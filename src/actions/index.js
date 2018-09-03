@@ -48,8 +48,7 @@ export function fetchMovies(query){
 			.then(
 				response => {
 					if(!response.ok){
-						console.log(response)
-						throw new Error()
+						throw new Error(response)
 					}
 					return response.json()
 				}
@@ -57,10 +56,8 @@ export function fetchMovies(query){
 			.then(
 				json => { 
 					if(!json){
-						console.log("Error: Json is ", json)
-						throw new Error()
+						throw new Error("Error: Json is ", json)
 					}
-					let results = json.Search; 
 					dispatch(receiveMovies(json))
 				}
 			)

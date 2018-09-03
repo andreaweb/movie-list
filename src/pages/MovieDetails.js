@@ -18,7 +18,7 @@ class MovieDetails extends React.Component {
 					<div 
 						className="movie-poster" 
 						style={{ backgroundImage: `url(
-							${this.props.activeMovie.movieDetails.Poster != "N/A" ? this.props.activeMovie.movieDetails.Poster : null})`
+							${this.props.activeMovie.movieDetails.Poster !== "N/A" ? this.props.activeMovie.movieDetails.Poster : null})`
 							}}
 					/>
 
@@ -27,26 +27,26 @@ class MovieDetails extends React.Component {
 						<span> {this.props.activeMovie.movieDetails.Year }
 							<span className="separator">|</span> 
 							{	
-								this.props.activeMovie.movieDetails.Runtime == "N/A"
+								this.props.activeMovie.movieDetails.Runtime === "N/A"
 								? "No Runtime available"
 								: this.props.activeMovie.movieDetails.Runtime
 							} 
 							<span className="separator">|</span> 
 							{	
-								this.props.activeMovie.movieDetails.Genre == "N/A"
+								this.props.activeMovie.movieDetails.Genre === "N/A"
 								? "No genre available"
 								: this.props.activeMovie.movieDetails.Genre
 							} 
 						</span>
 
 						<section className="rating">
-							{ this.props.activeMovie.movieDetails.imdbRating && this.props.activeMovie.movieDetails.imdbRating != "N/A"
+							{ this.props.activeMovie.movieDetails.imdbRating && this.props.activeMovie.movieDetails.imdbRating !== "N/A"
 								? <Rating rating={this.props.activeMovie.movieDetails.imdbRating} />
 								: null
 							}
 							
 							<span className="number-rating"> {
-								this.props.activeMovie.movieDetails.imdbRating == "N/A"
+								this.props.activeMovie.movieDetails.imdbRating === "N/A"
 								? " - "
 								: this.props.activeMovie.movieDetails.imdbRating
 							} / 10</span>
@@ -54,7 +54,7 @@ class MovieDetails extends React.Component {
 
 						<h5 className="synopsis-title">Sinopse</h5>
 						<p className="movie-synopsis">
-							{this.props.activeMovie.movieDetails.Plot == "N/A" 
+							{this.props.activeMovie.movieDetails.Plot === "N/A" 
 								? "No plot available"
 								: this.props.activeMovie.movieDetails.Plot
 							}

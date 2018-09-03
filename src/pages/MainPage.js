@@ -136,7 +136,7 @@ class MainPage extends React.Component {
                 (movie) => (
                   <li className="movie-item" key={movie.imdbID}>
                     <img className="movie-card" alt=""
-                    src={ movie.Poster == "N/A" ? "http://phillyjamz953fm.com/wp-content/plugins/penci-portfolio//images/no-thumbnail.jpg" : movie.Poster } />
+                    src={ movie.Poster === "N/A" ? "http://phillyjamz953fm.com/wp-content/plugins/penci-portfolio//images/no-thumbnail.jpg" : movie.Poster } />
                     <Link to={`/movieDetails/${movie.imdbID}`} onClick={(movieID) => this.searchMovieDetails(movie.imdbID)}>
                       <div className="movie-hover">
                         <span className="movie-hover__title">{movie.Title}</span>

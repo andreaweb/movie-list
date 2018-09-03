@@ -6,11 +6,6 @@ import MovieDetails from '../pages/MovieDetails.js';
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { connect } from 'react-redux';
-import {
- // searchMovies,
-  fetchMovies,
-  fetchMovieDetails
-} from '../actions'
 import './App.css'
 
 if (process.env.NODE_ENV !== 'production') {
