@@ -1,6 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-//import * as MoviesAPI from './MoviesAPI'
 import '../components/App.css'
 import Movie from '../components/Movie';
 import Loading from '../svg/Loading';
@@ -8,10 +6,10 @@ import Logo from '../svg/Logo';
 import Search from '../svg/Search';
 import { connect } from 'react-redux';
 import {
- // searchMovies,
   fetchMovies,
   fetchMovieDetails
 } from '../actions'
+
 if (process.env.NODE_ENV !== 'production') {
  // const {whyDidYouUpdate} = require('why-did-you-update');
  // whyDidYouUpdate(React);
@@ -35,7 +33,6 @@ class MainPage extends React.Component {
   }
 
   searchMovieDetails = (movieID) => {
-   // console.log(this.props.dispatch)
     this.props.dispatch(fetchMovieDetails(movieID))
   }
 
@@ -57,7 +54,6 @@ class MainPage extends React.Component {
     return (
       <div>
         <header className="header">
-          { /* import later as logo component */  }
           <Logo />
 
           <div className="search">
@@ -69,7 +65,7 @@ class MainPage extends React.Component {
 
             <Search toggleField={this.toggleSearchField} />
             
-             <span className={this.state.warning ? "warning" : "display-none"}>Please type at least 3 characters.</span>
+            <span className={this.state.warning ? "warning" : "display-none"}>Please type at least 3 characters.</span>
           </div>
 
           <section className={this.state.searchFieldVisible ? "user-info display-none" : "user-info"} >
@@ -82,7 +78,6 @@ class MainPage extends React.Component {
         <main>
           <h4 className="container-title">Trending</h4>
 
-          { /* loading */ }
           <div className={ this.props.moviesList.requesting ? "loading" : "loading display-none" }> 
             <Loading />
           </div>
