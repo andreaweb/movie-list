@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 //import * as MoviesAPI from './MoviesAPI'
 import '../components/App.css'
+import Movie from '../components/Movie';
 import { connect } from 'react-redux';
 import {
  // searchMovies,
@@ -134,16 +135,7 @@ class MainPage extends React.Component {
             { this.props.moviesList.movies  
               ? this.props.moviesList.movies.map(
                 (movie) => (
-                  <li className="movie-item" key={movie.imdbID}>
-                    <img className="movie-card" alt=""
-                    src={ movie.Poster === "N/A" ? "http://phillyjamz953fm.com/wp-content/plugins/penci-portfolio//images/no-thumbnail.jpg" : movie.Poster } />
-                    <Link to={`/movieDetails/${movie.imdbID}`} onClick={(movieID) => this.searchMovieDetails(movie.imdbID)}>
-                      <div className="movie-hover">
-                        <span className="movie-hover__title">{movie.Title}</span>
-                        <span className="movie-hover__year">{movie.Year}</span>
-                      </div>
-                    </Link>
-                  </li>
+                  <Movie movie={movie} goToMovieDetails={(movieID) => this.searchMovieDetails(movie.imdbID)}/>
               ))
               : <li className="movie-item">
                     <span>Nothing Found :(</span>
