@@ -54,6 +54,7 @@ body, .app {
   left: -30px;
   position: relative;
   top: 7px;
+  pointer-events: none
 }
 .search-field:focus ~ .search-svg use,
 .search-field:active ~ .search-svg use
@@ -264,6 +265,7 @@ body, .app {
   }
   .search-svg{
     cursor: pointer;
+    pointer-events:all;
   }
   .search-svg use{
     fill: #fff;

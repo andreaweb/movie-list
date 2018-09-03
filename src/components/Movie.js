@@ -8,7 +8,7 @@ class Movie extends React.Component {
 	}
 	render(){
 		return (
-			<li className="movie-item" key={this.props.movie.imdbID}>
+			<li className="movie-item">
 				<img className="movie-card" alt=""
 				src={ this.props.movie.Poster === "N/A" ? "http://phillyjamz953fm.com/wp-content/plugins/penci-portfolio//images/no-thumbnail.jpg" : this.props.movie.Poster } />
 				<Link to={`/movieDetails/${this.props.movie.imdbID}`} onClick={this.props.goToMovieDetails}>
