@@ -1,7 +1,12 @@
-### Desafio Indeva
+## Movie List
 
+* Check it out
+http://hideous-stage.surge.sh/
+![Print](public/images/print.jpg)
 
-* Instale as dependências com ```npm install```
-* Rode o projeto com ```npm start```
-* Faça um teste com ```npm test```
+This responsive app uses the Open Movie Database API (http://www.omdbapi.com/) to return movies based on a query.
+
+* Install dependencies with ```npm install```
+* Run it with ```npm start```
+* Test with ```npm test```
 
