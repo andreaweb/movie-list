@@ -1,12 +1,11 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-//import PropTypes from 'prop-types'
 import MainPage from '../pages/MainPage.js';
 import MovieDetails from '../pages/MovieDetails.js';
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { connect } from 'react-redux';
-import './App.css'
+import '../css/App.css'
 
 if (process.env.NODE_ENV !== 'production') {
  // const {whyDidYouUpdate} = require('why-did-you-update');

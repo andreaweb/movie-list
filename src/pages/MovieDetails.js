@@ -2,16 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Rating from '../components/Rating';
-import '../components/App.css'
+import '../css/App.css'
 
 class MovieDetails extends React.Component {
-	componentDidMount(){
-
-	}
-
 	render() {
-		return  ( //try to make something like if movieID == null, render MainPage instead
-		
+		return  (
 			<div>
 			{	this.props.activeMovie.movieDetails.Title ?
 				<div className="movie-details">

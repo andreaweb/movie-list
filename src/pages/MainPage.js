@@ -10,11 +10,6 @@ import {
   fetchMovieDetails
 } from '../actions'
 
-if (process.env.NODE_ENV !== 'production') {
- // const {whyDidYouUpdate} = require('why-did-you-update');
- // whyDidYouUpdate(React);
-}
-
 class MainPage extends React.Component {
   state = { 
     //There's no option to search by category or popularity, so I'm searching for a default word instead

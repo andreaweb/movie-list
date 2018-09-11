@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+    <defs>
+        <text id="b" fill="#FFF" font-family="FontAwesome5ProRegular, Font Awesome 5 Pro" font-size="16">
+            <tspan x="7" y="14">times</tspan>
+        </text>
+        <filter id="a" width="141.7%" height="141.7%" x="-20.8%" y="-16.7%" filterUnits="objectBoundingBox">
+            <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1.5"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <path d="M-4-6h24v24H-4z"/>
+        <g fill="#FFF" transform="translate(-4 -6)">
+            <use filter="url(#a)" xlink:href="#b"/>
+            <use xlink:href="#b"/>
+        </g>
+    </g>
+</svg>

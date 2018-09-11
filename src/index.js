@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import { configureStore, history } from './store/configureStore'
 import { startListener } from './actions'
 import App from './components/App'
-import './index.css'
 
 const store = configureStore()
 
