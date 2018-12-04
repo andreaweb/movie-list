@@ -1,0 +1,58 @@
+.movie-item{
+  max-height: 234px;
+  height: 234px;
+  margin-right: 32px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.movie-card{
+  width: 156px;
+  min-height: 153px;
+}
+.movie-item:hover .movie-hover{
+  display: block;
+}
+.movie-item a{
+  text-decoration: none !important;
+  color: inherit;
+}
+.movie-hover{
+  position: relative;
+  width: 136px;
+  height: 234px;
+  background: rgba(0,0,0,.5);
+  bottom: 238px;
+  padding: 0 10px;
+  display: none;
+  cursor: pointer;
+}
+.movie-hover__title{
+  padding-top: 100px;
+  box-sizing: content-box;
+  height: 100px;
+  line-height: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: flex-end;
+}
+.movie-hover__year{
+  font-weight: 500;
+  font-size: 12px;
+  padding-top: 5px;
+  display: block;
+}
+@media screen and (max-width: 825px){
+  .movie-item{
+    max-height: 162px;
+    margin-right: 10px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+  .movie-item:last-child{
+    margin-right: 8px
+  }
+  .movie-card{
+    width: 108px;
+  }
+}

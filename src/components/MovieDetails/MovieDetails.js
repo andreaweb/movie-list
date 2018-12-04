@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Rating from '../components/Rating';
-import '../css/App.css'
+import Rating from '../Rating/Rating';
+import './MovieDetails.css';
 
 class MovieDetails extends React.Component {
 	render() {

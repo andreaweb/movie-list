@@ -1,14 +1,14 @@
 import React from 'react'
-import '../components/App.css'
-import Movie from '../components/Movie';
-import Loading from '../svg/Loading';
-import Logo from '../svg/Logo';
-import Search from '../svg/Search';
+import Movie from '../Movie/Movie';
+import Loading from '../../svg/Loading';
+import Logo from '../../svg/Logo';
+import Search from '../../svg/Search';
 import { connect } from 'react-redux';
 import {
   fetchMovies,
   fetchMovieDetails
-} from '../actions'
+} from '../../actions'
+import './MainPage.css';
 
 class MainPage extends React.Component {
   state = { 
@@ -55,7 +55,7 @@ class MainPage extends React.Component {
             <input className={this.state.searchFieldVisible ? "search-field visible" : "search-field" } 
             onChange={this.searchMovieName} 
             ref={input => this.search = input}
-            placeholder="Que filme você procura?"
+            placeholder="Which movie or show are you looking for?"
             />
 
             <Search toggleField={this.toggleSearchField} />
