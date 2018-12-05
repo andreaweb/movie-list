@@ -17,7 +17,7 @@ const App = ({store}) => (
     <BrowserRouter>
       <Switch>     
         <Route path='/' exact component={MainPage}/>
-        <Route path='/movieDetails/' component={MovieDetails}/>
+        <Route path='/movieDetails/:id' component={MovieDetails}/>
       </Switch>
     </BrowserRouter>
   </Provider>

@@ -16,7 +16,6 @@ class Movie extends React.Component {
 				/>
 				<Link 
 					to={`/movieDetails/${this.props.movie.imdbID}`} 
-					onClick={this.props.goToMovieDetails}
 				>
 					<div className="movie-hover">
 						<span className="movie-hover__title">

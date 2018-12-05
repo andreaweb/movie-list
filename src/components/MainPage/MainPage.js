@@ -108,9 +108,6 @@ class MainPage extends React.Component {
                   <Movie 
                     movie={movie} 
                     key={movie.imdbID} 
-                    goToMovieDetails={(movieID) => 
-                      this.searchMovieDetails(movie.imdbID)
-                    }
                   />
               ))
               : <li className="movie-item">

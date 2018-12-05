@@ -2,9 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Rating from '../Rating/Rating';
+import { fetchMovieDetails } from '../../actions';
 import './MovieDetails.css';
 
 class MovieDetails extends React.Component {
+	componentDidMount(){
+		if(this.props.activeMovie.movieDetails.length > 1){
+			console.log('inherited from main')
+		}else{
+			let movieID = this.props.match.params.id;
+			this.props.dispatch(fetchMovieDetails(movieID));
+		}
+	}
 	render() {
 		return  (
 			<div>
@@ -13,13 +22,18 @@ class MovieDetails extends React.Component {
 					<div 
 						className="movie-poster" 
 						style={{ backgroundImage: `url(
-							${this.props.activeMovie.movieDetails.Poster !== "N/A" ? this.props.activeMovie.movieDetails.Poster : null})`
+							${this.props.activeMovie.movieDetails.Poster !== "N/A" 
+							? this.props.activeMovie.movieDetails.Poster 
+							: null})`
 							}}
 					/>
 
 					<main className="movie-info">
-						<h2 className="movie-title">{this.props.activeMovie.movieDetails.Title}</h2>
-						<span> {this.props.activeMovie.movieDetails.Year }
+						<h2 className="movie-title">
+							{this.props.activeMovie.movieDetails.Title}
+						</h2>
+						<span> 
+							{this.props.activeMovie.movieDetails.Year }
 							<span className="separator">|</span> 
 							{	
 								this.props.activeMovie.movieDetails.Runtime === "N/A"
@@ -35,7 +49,8 @@ class MovieDetails extends React.Component {
 						</span>
 
 						<section className="rating">
-							{ this.props.activeMovie.movieDetails.imdbRating && this.props.activeMovie.movieDetails.imdbRating !== "N/A"
+							{ this.props.activeMovie.movieDetails.imdbRating 
+								&& this.props.activeMovie.movieDetails.imdbRating !== "N/A"
 								? <Rating rating={this.props.activeMovie.movieDetails.imdbRating} />
 								: null
 							}
@@ -63,7 +78,12 @@ class MovieDetails extends React.Component {
 					<Link to="/">
 						<span className="close-button">
 							{ /* close icon */ }
-							<img className="close-icon" alt="" src="../images/ic-close@3x.png" height="16" width="16" />
+							<img 
+								className="close-icon" 
+								alt="" 
+								src="../images/ic-close@3x.png" 
+								height="16" width="16" 
+							/>
 							<span className="close-text">Voltar</span>
 						</span>
 					</Link>
@@ -77,8 +97,8 @@ class MovieDetails extends React.Component {
 }
 
 function mapStateToProps(state){
-  const { query, lastUpdated, activeMovie } = state
-  return { query, lastUpdated, activeMovie }
+  const { activeMovie } = state
+  return { activeMovie }
 }
 
 export default connect(mapStateToProps)(MovieDetails)
