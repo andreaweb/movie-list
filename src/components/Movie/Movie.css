@@ -49,6 +49,9 @@
     margin-bottom: 8px;
     overflow: hidden;
   }
+  .movie-hover{
+    width: 88px;
+  }
   .movie-item:last-child{
     margin-right: 8px
   }
