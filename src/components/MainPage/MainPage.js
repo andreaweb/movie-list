@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Movie from '../Movie/Movie';
 import Loading from '../../svg/Loading';
 import Logo from '../../svg/Logo';
@@ -12,7 +13,8 @@ import './MainPage.css';
 
 class MainPage extends React.Component {
   state = { 
-    //There's no option to search by category or popularity, so I'm searching for a default word instead
+    //There's no option to search by category or popularity,
+    // so I'm searching for a default word instead
     query: 'game',
     searchFieldVisible: false,
     warning: false,
@@ -24,7 +26,6 @@ class MainPage extends React.Component {
     if(this.props.moviesList.movies.length <= 0){
       this.props.dispatch(fetchMovies(this.state.query))
     }
-    console.log(this.props)
   }
 
   searchMovieDetails = (movieID) => {
@@ -41,9 +42,8 @@ class MainPage extends React.Component {
     }
   }
 
-  toggleSearchField = () => {
-    this.state.searchFieldVisible ? this.setState({searchFieldVisible: false}) : this.setState({searchFieldVisible: true})
-  }
+  toggleSearchField = () =>
+    this.setState({searchFieldVisible: !this.state.searchFieldVisible})
 
   render() {
     return (
@@ -52,20 +52,36 @@ class MainPage extends React.Component {
           <Logo />
 
           <div className="search">
-            <input className={this.state.searchFieldVisible ? "search-field visible" : "search-field" } 
-            onChange={this.searchMovieName} 
-            ref={input => this.search = input}
-            placeholder="Which movie or show are you looking for?"
+            <input 
+              className={this.state.searchFieldVisible 
+                ? "search-field visible" 
+                : "search-field"
+              } 
+              onChange={this.searchMovieName} 
+              ref={input => this.search = input}
+              placeholder="Which movie or show are you looking for?"
             />
 
             <Search toggleField={this.toggleSearchField} />
             
-            <span className={this.state.warning ? "warning" : "display-none"}>Please type at least 3 characters.</span>
+            <span className={this.state.warning ? "warning" : "display-none"}>
+              Please type at least 3 characters.
+            </span>
           </div>
 
-          <section className={this.state.searchFieldVisible ? "user-info display-none" : "user-info"} >
-           <div className="user-pic" 
-           style={{backgroundImage: "url('./images/user.jpg')", backgroundSize: 'cover', backgroundPosition: 'center center'}} />
+          <section 
+            className={this.state.searchFieldVisible 
+              ? "user-info display-none" 
+              : "user-info"
+            } 
+          >
+            <div 
+             className="user-pic" 
+             style={{backgroundImage: "url('./images/user.jpg')",
+                backgroundSize: 'cover', 
+                backgroundPosition: 'center center'
+              }} 
+            />
            <span className="user-name">Andrea Santana</span>
           </section>
         </header>
@@ -73,19 +89,33 @@ class MainPage extends React.Component {
         <main>
           <h4 className="container-title">Trending</h4>
 
-          <div className={ this.props.moviesList.requesting ? "loading" : "loading display-none" }> 
+          <div 
+            className={ this.props.moviesList.requesting 
+              ? "loading" 
+              : "display-none" 
+            }> 
             <Loading />
           </div>
 
-          <ul className={ this.props.moviesList.requesting ? "movies-container display-none" : "movies-container" }>
+          <ul 
+            className={ this.props.moviesList.requesting 
+              ? "movies-container display-none" 
+              : "movies-container" 
+            }>
             { this.props.moviesList.movies  
               ? this.props.moviesList.movies.map(
                 (movie) => (
-                  <Movie movie={movie} key={movie.imdbID} goToMovieDetails={(movieID) => this.searchMovieDetails(movie.imdbID)}/>
+                  <Movie 
+                    movie={movie} 
+                    key={movie.imdbID} 
+                    goToMovieDetails={(movieID) => 
+                      this.searchMovieDetails(movie.imdbID)
+                    }
+                  />
               ))
               : <li className="movie-item">
-                    <span>Nothing Found :(</span>
-                  </li>
+                  <span>Nothing Found :(</span>
+                </li>
             }
           </ul>
         </main>
@@ -93,9 +123,17 @@ class MainPage extends React.Component {
     )
   }
 }
+
+MainPage.propTypes = {
+  moviesList: PropTypes.shape({
+    movies: PropTypes.array,
+    requesting: PropTypes.bool.isRequired
+  })
+}
+
 function mapStateToProps(state){
-  const { moviesList , requesting, lastUpdated, movieDetails } = state
-  return { moviesList, requesting, lastUpdated, movieDetails }
+  const { moviesList } = state
+  return { moviesList }
 }
 
 export default connect(mapStateToProps)(MainPage)

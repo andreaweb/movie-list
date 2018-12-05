@@ -29,7 +29,7 @@ body, .app {
 }
 
 .loading svg{
-  left: 50%;
+  left: calc(50% - 48px);
   position: relative;
   top: 115px;
   animation: spin 4s infinite linear;
