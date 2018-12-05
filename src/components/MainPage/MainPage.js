@@ -28,10 +28,6 @@ class MainPage extends React.Component {
     }
   }
 
-  searchMovieDetails = (movieID) => {
-    this.props.dispatch(fetchMovieDetails(movieID))
-  }
-
   searchMovieName = () => {
     this.setState({query: this.search.value})
     if(this.search.value.length > 2){
