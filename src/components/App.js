@@ -23,9 +23,4 @@ const App = ({store}) => (
   </Provider>
 )
 
-function mapStateToProps(state){
-  const { query, movies, requesting, lastUpdated, movieDetails } = state
-  return { query, movies, requesting, lastUpdated, movieDetails }
-}
-
-export default connect(mapStateToProps)(App)
+export default connect()(App)
