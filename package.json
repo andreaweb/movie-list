@@ -16,7 +16,7 @@
     "sinon": "^6.1.5",
     "why-did-you-update": "^0.1.1"
   },
-  "homepage": "http://short-grade.surge.sh/",
+  "homepage": "http://hideous-stage.surge.sh",
   "devDependencies": {
     "babel-jest": "^23.4.2",
     "babel-polyfill": "^6.26.0",
@@ -43,7 +43,7 @@
     "test:coverage": "jest --coverage",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "surge --domain hideous-stage.surge.sh"
   },
   "jest": {
     "setupFiles": [
